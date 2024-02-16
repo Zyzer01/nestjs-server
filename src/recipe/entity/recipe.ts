@@ -36,6 +36,8 @@ export class Ingredient {
   @Column({ type: 'integer' })
   quantity: number;
 
-  @ManyToOne(() => Recipe, (recipe) => recipe.ingredients)
+  @ManyToOne(() => Recipe, (recipe) => recipe.ingredients, {
+    onDelete: 'CASCADE',
+  })
   recipe: Recipe;
 }
