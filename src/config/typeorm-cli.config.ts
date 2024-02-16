@@ -2,7 +2,7 @@ import { DataSource } from 'typeorm';
 import { ConfigService } from '@nestjs/config';
 import { config } from 'dotenv';
 import { Ingredient, Recipe } from 'src/recipe/entity/recipe';
-import { InitialSchema1708113642889 } from 'src/migrations/1708113642889-initial-schema';
+import { InitialSchema1708117401312 } from 'src/migrations/1708117401312-initial-schema';
 
 config();
 
@@ -17,5 +17,5 @@ export default new DataSource({
   database: configService.get<string>('DB_NAME'),
   logging: configService.get<boolean>('DB_LOGGING'),
   entities: [Recipe, Ingredient],
-  migrations: [InitialSchema1708113642889],
+  migrations: [InitialSchema1708117401312],
 });

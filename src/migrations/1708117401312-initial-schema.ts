@@ -7,7 +7,7 @@ import {
   TableForeignKey,
 } from 'typeorm';
 
-export class InitialSchema1708113642889 implements MigrationInterface {
+export class InitialSchema1708117401312 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
@@ -17,6 +17,7 @@ export class InitialSchema1708113642889 implements MigrationInterface {
             name: 'id',
             type: 'uuid',
             isPrimary: true,
+            isGenerated: true,
             generationStrategy: 'uuid',
             isNullable: false,
           },
@@ -28,14 +29,16 @@ export class InitialSchema1708113642889 implements MigrationInterface {
         ],
       }),
     );
+
     await queryRunner.createTable(
       new Table({
-        name: 'description',
+        name: 'ingredient',
         columns: [
           {
             name: 'id',
             type: 'uuid',
             isPrimary: true,
+            isGenerated: true,
             generationStrategy: 'uuid',
             isNullable: false,
           },
@@ -52,12 +55,13 @@ export class InitialSchema1708113642889 implements MigrationInterface {
           },
           {
             name: 'quantity',
-            type: 'number',
+            type: 'integer',
             isNullable: false,
           },
         ],
       }),
     );
+
     await queryRunner.addColumn(
       'ingredient',
       new TableColumn({
