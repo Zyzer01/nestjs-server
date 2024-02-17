@@ -20,6 +20,7 @@ export class Recipe {
     eager: true,
   })
   ingredients: Ingredient[];
+  user: any;
 }
 
 @Entity({ name: 'ingredient' })
