@@ -1,3 +1,4 @@
+import { User } from 'src/auth/entity/user';
 import {
   Column,
   Entity,
@@ -20,7 +21,9 @@ export class Recipe {
     eager: true,
   })
   ingredients: Ingredient[];
-  user: any;
+
+  @ManyToOne(() => User, (user) => user.recipes)
+  user: User;
 }
 
 @Entity({ name: 'ingredient' })
@@ -37,8 +40,6 @@ export class Ingredient {
   @Column({ type: 'integer' })
   quantity: number;
 
-  @ManyToOne(() => Recipe, (recipe) => recipe.ingredients, {
-    onDelete: 'CASCADE',
-  })
+  @ManyToOne(() => Recipe, (recipe) => recipe.ingredients)
   recipe: Recipe;
 }

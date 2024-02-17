@@ -11,18 +11,6 @@ import {
   ValidateNested,
 } from 'class-validator';
 
-export class RecipeDto {
-  @IsNotEmpty()
-  @IsString()
-  @MinLength(10)
-  description: string;
-
-  @IsArray()
-  @ArrayMinSize(1)
-  @ValidateNested({ each: true })
-  @Type(() => IngredientDto)
-  ingredients: IngredientDto[];
-}
 export enum Unit {
   MILILITERS = 'mililiters',
   LITERS = 'LITERS',
@@ -31,6 +19,19 @@ export enum Unit {
   SPOONS = 'spoons',
   CUPS = 'cups',
   PIECES = 'pieces',
+}
+
+export class RecipeDto {
+  @IsNotEmpty()
+  @MinLength(10)
+  @IsString()
+  description: string;
+
+  @IsArray()
+  @ArrayMinSize(1)
+  @ValidateNested({ each: true })
+  @Type(() => IngredientDto)
+  ingredients: IngredientDto[];
 }
 
 export class IngredientDto {
