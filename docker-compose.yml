@@ -10,7 +10,7 @@ services:
     ports:
       - 5432:5432
   adminer:
-    image: adminer
+    image: adminer 
     restart: always
     depends_on:
       - postgres
