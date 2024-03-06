@@ -1,4 +1,4 @@
-import {
+import { 
   registerDecorator,
   ValidationArguments,
   ValidationOptions,
